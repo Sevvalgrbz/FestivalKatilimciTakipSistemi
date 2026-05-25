@@ -1,120 +1,232 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
+using FestivalKatilimciTakipSistemi.VeritabaniKatmani;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
 
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-</root>
+namespace FestivalKatilimciTakipSistemi.Formlar
+{
+    public class FestivalForm : Form
+    {
+        KayitIslemleri kayit = new KayitIslemleri();
+        TabControl anaSekme = new TabControl();
+
+        public FestivalForm()
+        {
+            Text = "Festival Katılımcı Takip Sistemi";
+            Width = 1120;
+            Height = 700;
+            StartPosition = FormStartPosition.CenterScreen;
+
+            anaSekme.Dock = DockStyle.Fill;
+            Controls.Add(anaSekme);
+
+            SayfalariHazirla();
+        }
+
+        void SayfalariHazirla()
+        {
+            SayfaEkle("Katılımcılar", "sp_KatilimciListele", "sp_KatilimciEkle", "sp_KatilimciGuncelle", "sp_KatilimciSil",
+                new string[] { "p_katilimci_id", "p_ad", "p_soyad", "p_tc_no", "p_telefon", "p_eposta", "p_sehir" },
+                new string[] { "Katılımcı ID", "Ad", "Soyad", "TC No", "Telefon", "E-posta", "Şehir" },
+                0, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { 0, 1, 2, 4, 5, 6 });
+
+            SayfaEkle("Etkinlikler", "sp_EtkinlikListele", "sp_EtkinlikEkle", "sp_EtkinlikGuncelle", "sp_EtkinlikSil",
+                new string[] { "p_etkinlik_id", "p_etkinlik_adi", "p_sahne_adi", "p_etkinlik_tarihi", "p_baslangic_saati", "p_kapasite", "p_aciklama" },
+                new string[] { "Etkinlik ID", "Etkinlik Adı", "Sahne Adı", "Tarih", "Başlangıç Saati", "Kapasite", "Açıklama" },
+                0, new int[] { 1, 2, 3, 4, 5, 6 }, new int[] { 0, 1, 2, 3, 4, 5, 6 });
+
+            SayfaEkle("Bilet Türleri", "sp_BiletTuruListele", "sp_BiletTuruEkle", "sp_BiletTuruGuncelle", "sp_BiletTuruSil",
+                new string[] { "p_bilet_tur_id", "p_tur_adi", "p_fiyat", "p_aciklama" },
+                new string[] { "Bilet Tür ID", "Tür Adı", "Fiyat", "Açıklama" },
+                0, new int[] { 1, 2, 3 }, new int[] { 0, 1, 2, 3 });
+
+            SayfaEkle("Biletler", "sp_BiletListele", "sp_BiletEkle", "sp_BiletGuncelle", "sp_BiletSil",
+                new string[] { "p_bilet_id", "p_katilimci_id", "p_etkinlik_id", "p_bilet_tur_id", "p_bilet_kodu", "p_durum" },
+                new string[] { "Bilet ID", "Katılımcı ID", "Etkinlik ID", "Bilet Tür ID", "Bilet Kodu", "Durum" },
+                0, new int[] { 1, 2, 3, 4 }, new int[] { 0, 1, 2, 3, 4, 5 });
+
+            SayfaEkle("Görevliler", "sp_GorevliListele", "sp_GorevliEkle", "sp_GorevliGuncelle", "sp_GorevliSil",
+                new string[] { "p_gorevli_id", "p_ad", "p_soyad", "p_gorev", "p_telefon" },
+                new string[] { "Görevli ID", "Ad", "Soyad", "Görev", "Telefon" },
+                0, new int[] { 1, 2, 3, 4 }, new int[] { 0, 1, 2, 3, 4 });
+
+            SayfaEkle("Katılım Kayıtları", "sp_KatilimKaydiListele", "sp_KatilimKaydiEkle", "sp_KatilimKaydiGuncelle", "sp_KatilimKaydiSil",
+                new string[] { "p_kayit_id", "p_bilet_id", "p_gorevli_id", "p_giris_saati", "p_kontrol_durumu" },
+                new string[] { "Kayıt ID", "Bilet ID", "Görevli ID", "Giriş Saati", "Kontrol Durumu" },
+                0, new int[] { 1, 2, 3, 4 }, new int[] { 0, 2, 3, 4 });
+
+            SayfaEkle("Ödemeler", "sp_OdemeListele", "sp_OdemeEkle", "sp_OdemeGuncelle", "sp_OdemeSil",
+                new string[] { "p_odeme_id", "p_bilet_id", "p_tutar", "p_odeme_turu", "p_durum" },
+                new string[] { "Ödeme ID", "Bilet ID", "Tutar", "Ödeme Türü", "Durum" },
+                0, new int[] { 1, 2, 3 }, new int[] { 0, 2, 3, 4 });
+        }
+
+        void SayfaEkle(string baslik, string listeleYordam, string ekleYordam, string guncelleYordam, string silYordam,
+            string[] parametreler, string[] etiketler, int idSirasi, int[] ekleAlanlari, int[] guncelleAlanlari)
+        {
+            TabPage sayfa = new TabPage(baslik);
+            Panel sol = new Panel();
+            DataGridView grid = new DataGridView();
+            Dictionary<string, TextBox> kutular = new Dictionary<string, TextBox>();
+
+            sol.Dock = DockStyle.Left;
+            sol.Width = 310;
+            sol.Padding = new Padding(10);
+
+            grid.Dock = DockStyle.Fill;
+            grid.ReadOnly = true;
+            grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            int y = 10;
+
+            Label baslikYazi = new Label();
+            baslikYazi.Text = baslik + " İşlemleri";
+            baslikYazi.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            baslikYazi.Left = 10;
+            baslikYazi.Top = y;
+            baslikYazi.Width = 280;
+            sol.Controls.Add(baslikYazi);
+            y += 35;
+
+            for (int i = 0; i < parametreler.Length; i++)
+            {
+                Label lbl = new Label();
+                lbl.Text = etiketler[i];
+                lbl.Left = 10;
+                lbl.Top = y;
+                lbl.Width = 280;
+                sol.Controls.Add(lbl);
+                y += 22;
+
+                TextBox txt = new TextBox();
+                txt.Left = 10;
+                txt.Top = y;
+                txt.Width = 275;
+
+                if (i == idSirasi)
+                {
+                    txt.Enabled = false;
+                }
+
+                sol.Controls.Add(txt);
+                kutular.Add(parametreler[i], txt);
+                y += 32;
+            }
+
+            Button btnEkle = YeniButon("Ekle", 10, y);
+            Button btnGuncelle = YeniButon("Güncelle", 105, y);
+            Button btnSil = YeniButon("Sil", 200, y);
+            y += 38;
+            Button btnListele = YeniButon("Listele", 10, y, 275);
+
+            sol.Controls.Add(btnEkle);
+            sol.Controls.Add(btnGuncelle);
+            sol.Controls.Add(btnSil);
+            sol.Controls.Add(btnListele);
+
+            sayfa.Controls.Add(grid);
+            sayfa.Controls.Add(sol);
+            anaSekme.TabPages.Add(sayfa);
+
+            btnListele.Click += (s, e) => Listele(grid, listeleYordam);
+
+            btnEkle.Click += (s, e) =>
+            {
+                try
+                {
+                    kayit.YordamCalistir(ekleYordam, DegerleriHazirla(parametreler, kutular, ekleAlanlari));
+                    MessageBox.Show("Kayıt eklendi.");
+                    Listele(grid, listeleYordam);
+                }
+                catch (Exception hata)
+                {
+                    MessageBox.Show(hata.Message);
+                }
+            };
+
+            btnGuncelle.Click += (s, e) =>
+            {
+                try
+                {
+                    kayit.YordamCalistir(guncelleYordam, DegerleriHazirla(parametreler, kutular, guncelleAlanlari));
+                    MessageBox.Show("Kayıt güncellendi.");
+                    Listele(grid, listeleYordam);
+                }
+                catch (Exception hata)
+                {
+                    MessageBox.Show(hata.Message);
+                }
+            };
+
+            btnSil.Click += (s, e) =>
+            {
+                try
+                {
+                    Dictionary<string, object> veri = new Dictionary<string, object>();
+                    veri.Add(parametreler[idSirasi], kutular[parametreler[idSirasi]].Text);
+                    kayit.YordamCalistir(silYordam, veri);
+                    MessageBox.Show("Kayıt silindi.");
+                    Listele(grid, listeleYordam);
+                }
+                catch (Exception hata)
+                {
+                    MessageBox.Show(hata.Message);
+                }
+            };
+
+            grid.CellClick += (s, e) =>
+            {
+                if (e.RowIndex < 0) return;
+
+                for (int i = 0; i < parametreler.Length; i++)
+                {
+                    string kolon = parametreler[i].Replace("p_", "");
+
+                    if (grid.Columns.Contains(kolon))
+                    {
+                        kutular[parametreler[i]].Text = grid.Rows[e.RowIndex].Cells[kolon].Value.ToString();
+                    }
+                }
+            };
+
+            Listele(grid, listeleYordam);
+        }
+
+        Button YeniButon(string yazi, int x, int y, int genislik = 85)
+        {
+            Button btn = new Button();
+            btn.Text = yazi;
+            btn.Left = x;
+            btn.Top = y;
+            btn.Width = genislik;
+            btn.Height = 30;
+            return btn;
+        }
+
+        void Listele(DataGridView grid, string yordamAdi)
+        {
+            try
+            {
+                grid.DataSource = kayit.VerileriGetir(yordamAdi);
+            }
+            catch (Exception hata)
+            {
+                MessageBox.Show("Listeleme hatası: " + hata.Message);
+            }
+        }
+
+        Dictionary<string, object> DegerleriHazirla(string[] parametreler, Dictionary<string, TextBox> kutular, int[] kullanilacaklar)
+        {
+            Dictionary<string, object> degerler = new Dictionary<string, object>();
+
+            foreach (int sira in kullanilacaklar)
+            {
+                degerler.Add(parametreler[sira], kutular[parametreler[sira]].Text.Trim());
+            }
+
+            return degerler;
+        }
+    }
+}
